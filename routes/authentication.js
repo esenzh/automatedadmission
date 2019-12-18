@@ -8,7 +8,7 @@ let saltRounds = 10;
 
 router
     .get('/signup', (req, res) => {
-        res.send('signup');
+        res.render('signup');
     })
     .post('/signup', async (req, res) => {
         const {first_name, last_name, email, username, password} = req.body;
@@ -37,7 +37,7 @@ router
         }
     })
     .get('/login', (req, res) => {
-        res.send('login');
+        res.render('login');
     })
     .post('/login', async (req, res) => {
         const {username, password} = req.body;
