@@ -4,17 +4,20 @@ const Test = require('../models/test');
 
 /* Get to test page. */
 router.get('/test', async (req, res, next) => {
-    const test = await Test.find({});
-    res.render('test', {test});
+  const test = await Test.find({});
+  res.render('test', { test });
 });
 
 router.get('/start-test', async (req, res) => {
-    if (!req.session.user) {
-      const message = 'Please Login before starting test or Register';
-      res.redirect(`/login?message=${message}`);
-    } else {
-        res.redirect('/user/test');
-    }
+  if (!req.session.user) {
+    const message = 'Please Login before starting test or Register';
+    res.redirect(`/login?message=${message}`);
+  } else {
+    res.redirect('/user/test');
+  }
+});
+router.get('/calendar', (req, res) => {
+  res.render('calendar');
 });
 
 module.exports = router;
