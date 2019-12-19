@@ -2,46 +2,20 @@
         <fieldset>
             <legend></legend>
                 <div class="card mycard">
-                    <div class="card-number">
-                        <span class="card-number-style">12 февраля</span>
-                    </div>
                     <ul class="card-time-list">
+                        {{#each cards}}
+                        <li>
+                            <div class="card-number">
+                                <span class="card-number-style">{{this.day}} {{this.month}}</span>
+                            </div>
+                        </li>
                         <li class="card-time-item">
+                            {{#each cards}}
                             <input class="time-time-list__input" type="radio" name="freetime"  checked>
-                            <label class="time-time-list__item__label">10:00</label>
+                            <label class="time-time-list__item__label">{{this.time}}</label>
+                            {{/each}}
                         </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">11:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">12:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">13:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">14:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">15:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">16:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">17:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">18:00</label>
-                        </li>
+                        {{/each}}
                     </ul>
                 </div>
         </fieldset>
