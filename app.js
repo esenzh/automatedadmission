@@ -13,6 +13,8 @@ app.use('/', indexRouter);
 app.use('/', authenticationRouter);
 app.use('/user', usersRouter);
 
+app.use(express.urlencoded({extended: true}));
+
 useErrorHandlers(app);
 
 module.exports = app;

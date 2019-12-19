@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Test = require('../models/test');
+const User = require('../models/user');
 
 /* Get to test page. */
 router.get('/start-test', async (req, res) => {
@@ -10,33 +11,37 @@ router.get('/start-test', async (req, res) => {
     } else {
         res.redirect('/user/test');
     }
-    })
+})
     .get('/test', async (req, res, next) => {
         let test = await Test.find({});
-        let newTest = [...test];
         let counter = 0;
-        newTest[0].a = '123';
-        console.log(newTest);
-
-
-        // for (let i = 0; i < test.length; i++) {
-        //     let b = 123;
-        //     console.log(b);
-        //     test[i].a = b;
-        //     console.log(test[i]);
-        //     break;
-        // }
-        // console.log('Testing');
-        // console.log(test);
-        // test.forEach(each => {
-        //     console.log(each);
-        //     each.questionNumber = counter;
-        //     counter++;
-        // });
+        test = await test.map(el => {
+            let a = {'questionNumber': `question${counter}`};
+            let obj = {};
+            Object.assign(obj, el._doc, a);
+            counter++;
+            return obj;
+        });
         res.render('test', {test});
     })
     .post('/test/submit', async (req, res, next) => {
-        console.log(req.body)
+        const form = JSON.parse(JSON.stringify(req.body));
+        const {question0, question1, question2} = form;
+        const test = await Test.find({});
+        let counter = 0;
+        test.forEach(el => {
+            if (el.answer === question0)
+                counter++;
+            else if (el.answer === question1)
+                counter++;
+            else if (el.answer === question2)
+                counter++;
+        });
+        if(!req.session.user) {
+            res.redirect('/login');
+        } else {
+            await User.findOneAndUpdate({_id: req.session.user._id}, {$set:{test_result: counter}})
+        }
     });
 
 
