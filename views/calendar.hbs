@@ -1,24 +1,21 @@
 <form class="form">
-        <fieldset>
-            <legend></legend>
-                <div class="card mycard">
-                    <ul class="card-time-list">
-                        {{#each cards}}
-                        <li>
-                            <div class="card-number">
-                                <span class="card-number-style">{{this.day}} {{this.month}}</span>
-                            </div>
-                        </li>
-                        <li class="card-time-item">
-                            {{#each cards}}
-                            <input class="time-time-list__input" type="radio" name="freetime"  checked>
-                            <label class="time-time-list__item__label">{{this.time}}</label>
-                            {{/each}}
-                        </li>
-                        {{/each}}
-                    </ul>
-                </div>
-        </fieldset>
-        <button type="submit" class="btn btn-success button">отправить</button>
-    </form>
+  <ul class="card-time-list">
+    {{#each cards}}
+    {{!-- <li> --}}
+    <li class="card-time-item">
+      <div class="card mycard">
+        <div class="card-number">
+          <span class="card-number-style">{{this.day}} {{this.month}}</span>
+        </div>
+        {{!-- </li> --}}
+        {{#each this.time}}
+        <input class="time-time-list__input" type="radio" name="freetime" checked>
+        <label class="time-time-list__item__label">{{this}}</label>
+        {{/each}}
+      </div>
+    </li>
+    {{/each}}
+  </ul>
 
+  <button type="submit" class="btn btn-success button">отправить</button>
+</form>

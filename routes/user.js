@@ -18,8 +18,10 @@ router.get('/start-test', async (req, res) => {
     res.redirect('/user/test');
   }
 });
-router.get('/calendar', (req, res) => {
-  res.render('calendar');
+router.get('/calendar', async (req, res) => {
+  const cards = await Card.find();
+  console.log(cards);
+  res.render('calendar', { cards, });
 });
 
 module.exports = router;
