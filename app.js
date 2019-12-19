@@ -1,7 +1,7 @@
 const express = require('express');
 
 const indexRouter = require('./routes');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/user');
 const authenticationRouter = require('./routes/authentication');
 const userMiddleWare = require('./middleware');
 const useErrorHandlers = require("./middleware/error-handlers");
@@ -11,7 +11,7 @@ userMiddleWare(app);
 
 app.use('/', indexRouter);
 app.use('/', authenticationRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 
 useErrorHandlers(app);
 

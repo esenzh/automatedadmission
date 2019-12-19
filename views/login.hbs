@@ -1,5 +1,8 @@
 <div class="container">
     <div class="card m-3 p-4">
+        {{#if message}}
+            <p style="color: red;">{{this.message}}</p>
+        {{/if}}
         <h2>Login</h2>
         <br>
         <form action="/login" method="POST">
