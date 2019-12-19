@@ -18,10 +18,7 @@ router.get('/start-test', async (req, res) => {
     res.redirect('/user/test');
   }
 });
-
-router.get('/calendar', async (req, res) => {
-  const cards = await Card.find({});
-  console.log(cards);
+router.get('/calendar', (req, res) => {
   res.render('calendar');
 });
 
