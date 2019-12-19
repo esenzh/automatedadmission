@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Card = require('../models/card');
 
 mongoose.connect(
   'mongodb+srv://tenderUser:b.-6EEHk!7obdBxTshEP@cluster0-kuoil.mongodb.net/test?retryWrites=true&w=majority',
@@ -7,36 +8,18 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
 );
-const Test = require('../models/test');
 
-const test1 = new Test({
-  question: 'Which one is not a variable type in JS?',
-  options: ['undefined', 'null', 'NaN', 'function'],
-  answer: 'NaN',
-});
-const test2 = new Test({
-  question: 'What is the loo?',
-  options: ['undefined', 'null', 'NaN', 'function'],
-  answer: 'Iteration',
-});
-const test3 = new Test({
-  question: 'How is life?',
-  options: ['undefined', 'null', 'NaN', 'function'],
-  answer: 'All good',
-});
-const test4 = new Test({
-  question: 'You good?',
-  options: ['undefined', 'null', 'NaN', 'function'],
-  answer: 'NaN',
-});
-const test5 = new Test({
-  question: 'Which one is not a variable type in JS?',
-  options: ['undefined', 'null', 'NaN', 'function'],
-  answer: 'NaN',
+const testCard1 = new Card({
+  day: 13,
+  month: 'March',
+  time: ['10:00', '11:00', '12:00'],
 });
 
-test1.save();
-test2.save();
-test3.save();
-test4.save();
-test5.save();
+const testCard2 = new Card({
+  day: 15,
+  month: 'April',
+  time: ['10:00', '11:00', '12:00', '14:00'],
+});
+
+testCard1.save();
+testCard2.save();

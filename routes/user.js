@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const Test = require('../models/test');
+const Card = require('../models/card');
 
 /* Get to test page. */
 router.get('/test', async (req, res, next) => {
