@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const Test = require('../models/test');
+const Card = require('../models/card');
 
 /* Get to test page. */
 router.get('/test', async (req, res, next) => {
@@ -18,7 +19,9 @@ router.get('/start-test', async (req, res) => {
   }
 });
 
-router.get('/calendar', (req, res) => {
+router.get('/calendar', async (req, res) => {
+  const cards = await Card.find({});
+  console.log(cards);
   res.render('calendar');
 });
 
