@@ -21,7 +21,6 @@ router.get('/start-test', async (req, res) => {
 
 router.get('/calendar', async (req, res) => {
   const cards = await Card.find({});
-  
   console.log(cards);
   res.render('calendar');
 });
