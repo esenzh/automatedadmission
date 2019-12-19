@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/automatedadmission", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/automatedadmission', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 module.exports = mongoose.connection;
