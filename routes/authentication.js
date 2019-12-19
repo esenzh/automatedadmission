@@ -38,7 +38,6 @@ router
     })
     .get('/login', (req, res) => {
         const {message} = req.query;
-        console.log(req.query);
         res.render('login', {message});
     })
     .post('/login', async (req, res) => {

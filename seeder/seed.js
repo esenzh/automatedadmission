@@ -5,11 +5,46 @@ mongoose.connect("mongodb://localhost:27017/automatedadmission", {
 });
 const Test = require('../models/test');
 
-const test1 = new Test({question: 'Which one is not a variable type in JS?', options: ['undefined', 'null', 'NaN', 'function'], answer: 'NaN'});
-const test2 = new Test({question: 'What is the loo?', options: ['undefined', 'null', 'NaN', 'function'], answer: 'Iteration'});
-const test3 = new Test({question: 'How is life?', options: ['undefined', 'null', 'NaN', 'function'], answer: 'All good'});
-const test4 = new Test({question: 'You good?', options: ['undefined', 'null', 'NaN', 'function'], answer: 'NaN'});
-const test5 = new Test({question: 'Which one is not a variable type in JS?', options: ['undefined', 'null', 'NaN', 'function'], answer: 'NaN'});
+const test1 = new Test({
+    question: 'Which one is not a variable type in JS?',
+    answer: 'NaN',
+    option1: 'undefined',
+    option2: 'null',
+    option3: 'NaN',
+    option4: 'function'
+});
+const test2 = new Test({
+    question: 'What is the loop?',
+    answer: 'Iteration',
+    option1: 'undefined',
+    option2: 'null',
+    option3: 'NaN',
+    option4: 'Iteration'
+});
+const test3 = new Test({
+    question: 'How is life?',
+    answer: 'All good',
+    option1: 'undefined',
+    option2: 'All good',
+    option3: 'NaN',
+    option4: 'function'
+});
+const test4 = new Test({
+    question: 'You good?',
+    answer: 'Yeah',
+    option1: 'undefined',
+    option2: 'null',
+    option3: 'NaN',
+    option4: 'Yeah'
+});
+const test5 = new Test({
+    question: 'Which one is not a variable type in JS?',
+    answer: 'NaN',
+    option1: 'undefined',
+    option2: 'null',
+    option3: 'NaN',
+    option4: 'function'
+});
 
 test1.save();
 test2.save();
