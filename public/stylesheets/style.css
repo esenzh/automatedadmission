@@ -27,13 +27,18 @@ a {
 }
 
 .mycard {
-  width: 300px;
+  width: 350px;
   margin-bottom: 80px;
+  margin-left: 20px;
+  padding: 20px;
 }
 
 .card-time-item {
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 10px;
+
+}
+.time-time-list__label{
+  margin-right: 10px;
 }
 
 .card-number {
@@ -42,4 +47,9 @@ a {
 .button {
   display: flex;
   margin-left: 50%;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  
 }
