@@ -20,19 +20,30 @@
         </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/signup">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
+                <ul class="navbar-nav mr-auto">
+                    {{#if isUser}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                    {{else if isAdmin}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/list-slots">List Slots</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/list-student">Student List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/signup">Register</a>
+                        </li>
+                    {{/if}}
+
                 </ul>
             </div>
         </nav>

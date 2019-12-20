@@ -40,8 +40,12 @@ router.get('/start-test', async (req, res) => {
         if(!req.session.user) {
             res.redirect('/login');
         } else {
-            await User.findOneAndUpdate({_id: req.session.user._id}, {$set:{test_result: counter}})
+            await User.findOneAndUpdate({_id: req.session.user._id}, {$set:{test_result: counter}});
+            res.redirect('/user/calendar');
         }
+    })
+    .get('/calendar', (req, res) => {
+       res.render('calendar');
     });
 
 

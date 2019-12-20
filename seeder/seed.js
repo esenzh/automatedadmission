@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 mongoose.connect(
-  'mongodb+srv://tenderUser:b.-6EEHk!7obdBxTshEP@cluster0-kuoil.mongodb.net/test?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
+    'mongodb+srv://tenderUser:b.-6EEHk!7obdBxTshEP@cluster0-kuoil.mongodb.net/test?retryWrites=true&w=majority',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    },
 );
 const Test = require('../models/test');
+const Admin = require('../models/admin');
 
 const test1 = new Test({
     question: 'Which one is not a variable type in JS?',
@@ -33,6 +35,20 @@ const test3 = new Test({
     option4: 'Come again'
 });
 
-test1.save();
-test2.save();
-test3.save();
+// test1.save();
+// test2.save();
+// test3.save();
+
+let saltRounds = 10;
+async function admin() {
+    let password = 'admin2';
+    const admin = new Admin({
+        first_name: 'Admin1',
+        last_name: 'Adminov1',
+        email: 'admin1@mailru',
+        username: 'admin2',
+        password: await bcrypt.hash(password, saltRounds)
+    });
+    // admin.save();
+}
+// admin();
