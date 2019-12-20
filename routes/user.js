@@ -15,6 +15,7 @@ router
     }
   })
   .get('/test', async (req, res, next) => {
+    const { user } = req.session;
     let test = await Test.find({});
     let counter = 0;
     test = await test.map(el => {
@@ -24,7 +25,7 @@ router
       counter++;
       return obj;
     });
-    res.render('test', { test });
+    res.render('test', { test, user });
   })
   .post('/test/submit', async (req, res, next) => {
     const form = JSON.parse(JSON.stringify(req.body));
@@ -47,7 +48,8 @@ router
     }
   })
   .get('/calendar', (req, res) => {
-    res.render('calendar');
+    const { user } = req.session;
+    res.render('calendar', { user });
   });
 
 router.post('/calendar');

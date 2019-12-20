@@ -20,15 +20,15 @@ const app = express();
 
 userMiddleWare(app);
 
-app.use(function (req, res, next) {
-    app.locals.isUser = !!req.session.user;
-    app.locals.isAdmin = !!req.session.admin;
-    if (req.session.user) {
-        app.locals.userName = req.session.user.username;
-    } else if (req.session.admin) {
-        app.locals.userName = req.session.admin.username;
-    }
-    next();
+app.use((req, res, next) => {
+  app.locals.isUser = !!req.session.user;
+  app.locals.isAdmin = !!req.session.admin;
+  if (req.session.user) {
+    app.locals.userName = req.session.user.username;
+  } else if (req.session.admin) {
+    app.locals.userName = req.session.admin.username;
+  }
+  next();
 });
 
 app.use('/', indexRouter);
