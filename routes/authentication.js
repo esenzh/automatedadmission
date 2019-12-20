@@ -47,7 +47,7 @@ router
 
     if (user && (await bcrypt.compare(password, user.password))) {
       req.session.user = user;
-      res.redirect('/user/test');
+      res.redirect('/');
     } else {
       let message =
         'You are not authorized, please check your username or password!';
