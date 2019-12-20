@@ -1,5 +1,5 @@
 function cookiesCleaner(req, res, next) {
-  if (req.cookies.user_sid && !req.session.user) {
+  if (req.cookies.user_sid && !req.session.user && !req.session.admin) {
     res.clearCookie('user_sid');
   }
   next();

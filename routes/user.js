@@ -2,32 +2,55 @@ const express = require('express');
 
 const router = express.Router();
 const Test = require('../models/test');
-const Card = require('../models/card');
+const User = require('../models/user');
 
 /* Get to test page. */
-router.get('/test', async (req, res) => {
-  const { user } = req.session;
-  const test = await Test.find({});
-  res.render('test', { test, user });
-});
+router
+  .get('/start-test', async (req, res) => {
+    if (!req.session.user) {
+      const message = 'Please Login before starting test or Register';
+      res.redirect(`/login?message=${message}`);
+    } else {
+      res.redirect('/user/test');
+    }
+  })
+  .get('/test', async (req, res, next) => {
+    let test = await Test.find({});
+    let counter = 0;
+    test = await test.map(el => {
+      let a = { questionNumber: `question${counter}` };
+      let obj = {};
+      Object.assign(obj, el._doc, a);
+      counter++;
+      return obj;
+    });
+    res.render('test', { test });
+  })
+  .post('/test/submit', async (req, res, next) => {
+    const form = JSON.parse(JSON.stringify(req.body));
+    const { question0, question1, question2 } = form;
+    const test = await Test.find({});
+    let counter = 0;
+    test.forEach(el => {
+      if (el.answer === question0) counter++;
+      else if (el.answer === question1) counter++;
+      else if (el.answer === question2) counter++;
+    });
+    if (!req.session.user) {
+      res.redirect('/login');
+    } else {
+      await User.findOneAndUpdate(
+        { _id: req.session.user._id },
+        { $set: { test_result: counter } },
+      );
+      res.redirect('/user/calendar');
+    }
+  })
+  .get('/calendar', (req, res) => {
+    res.render('calendar');
+  });
 
-router.get('/start-test', async (req, res) => {
-  if (!req.session.user) {
-    const message = 'Please Login before starting test or Register';
-    res.redirect(`/login?message=${message}`);
-  } else {
-    res.redirect('/user/test');
-  }
-});
-
-router.get('/calendar', async (req, res) => {
-  const { user } = req.session;
-  const cards = await Card.find();
-  console.log(cards);
-  res.render('calendar', { cards, user });
-});
-
-router.post('/calendar', )
+router.post('/calendar');
 
 // async function(req, res, next) {
 //   const newEntry = new Entry({
