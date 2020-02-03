@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card m-3 p-4">
+        {{#if message}}
+            {{#if status}}
+                <div class="list-group">
+                    <a href="#!"
+                       class="list-group-item list-group-item-action list-group-item-success">{{this.message}}</a>
+                </div>
+            {{else}}
+                <div class="list-group">
+                    <a href="#!"
+                       class="list-group-item list-group-item-action list-group-item-success">{{this.message}}</a>
+                </div>
+            {{/if}}
+            <br>
+        {{/if}}
+        <p>Please set a time and date to handle the exam with student</p>
+        <br>
+        <form action="/admin/submitTime" method="POST">
+            <div class="form-group">
+                <label>Date:</label>
+                <input class="border form-control" type="date" id="start" name="date"
+                       min="2019-01-01" max="2019-12-31" required/>
+            </div>
+            <div class="form-group">
+                <label>Time:</label>
+                <input class="border form-control" type="text" name="time" placeholder="14:00" required/>
+            </div>
+            <input type="submit" class="btn btn-success" value="Submit">
+        </form>
+    </div>
+</div>
