@@ -23,7 +23,7 @@ router
       const a = { questionNumber: `question${counter}` };
       const obj = {};
       Object.assign(obj, el._doc, a);
-      counter++;
+      counter += 1;
       return obj;
     });
     res.render('test', { test });
