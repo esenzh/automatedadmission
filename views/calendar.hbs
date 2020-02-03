@@ -1,0 +1,19 @@
+<div class="container">
+    <h4>Please choose the date and time to register for exam</h4>
+    <br>
+    {{#each card}}
+        <div class="card p-3 mycard">
+            <form action="/user/exam-register" method="POST">
+                <h4>{{this.date}}</h4>
+                <input type="hidden" name="date" value="{{this.date}}">
+                {{#each this.time}}
+                    <input type="radio" name="time" value="{{this.time}}">
+                    <label for="this">{{this.time}}</label>
+                {{/each}}
+                <br>
+                <p>Examinator: <b>{{this.admin}}</b></p>
+                <input type="submit" class="btn btn-success btn-small" value="Submit">
+            </form>
+        </div>
+    {{/each}}
+</div>
