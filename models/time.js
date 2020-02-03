@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const timeSchema = Schema({
+const timeSchema = new mongoose.Schema({
     time: String,
-    admin: String,
     user: String
 });
 

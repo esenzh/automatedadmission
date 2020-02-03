@@ -1,0 +1,15 @@
+<div class="container">
+    {{#each users}}
+        <div class="card m-3">
+            <ul class="list-group">
+                <li class="list-group-item active">{{this.first_name}} {{this.last_name}}</li>
+                <li class="list-group-item">Email: <b>{{this.email}}</b></li>
+                {{#if this.test_result}}
+                    <li class="list-group-item">Test results: <b>{{this.test_result}}</b></li>
+                {{else}}
+                    <li class="list-group-item">Test results: <b>This student haven't completed the test</b></li>
+                {{/if}}
+            </ul>
+        </div>
+    {{/each}}
+</div>

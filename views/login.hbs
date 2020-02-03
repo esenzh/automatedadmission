@@ -1,7 +1,10 @@
 <div class="container">
     <div class="card m-3 p-4">
         {{#if message}}
-            <p style="color: red;">{{this.message}}</p>
+            <div class="list-group">
+                <a href="#!" class="list-group-item list-group-item-action list-group-item-danger">{{this.message}}</a>
+            </div>
+            <br>
         {{/if}}
         <h2>Login</h2>
         <br>

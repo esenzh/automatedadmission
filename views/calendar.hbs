@@ -1,52 +1,19 @@
-<h3>Please choose the date and time to register for exam</h3>
-<br>
-<form class="form">
-        <fieldset>
-            <legend></legend>
-                <div class="card mycard">
-                    <div class="card-number">
-                        <span class="card-number-style">12 февраля</span>
-                    </div>
-                    <ul class="card-time-list">
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime"  checked>
-                            <label class="time-time-list__item__label">10:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">11:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">12:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">13:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">14:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">15:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">16:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">17:00</label>
-                        </li>
-                        <li class="card-time-item">
-                            <input class="time-time-list__input" type="radio" name="freetime">
-                            <label class="time-time-list__item__label">18:00</label>
-                        </li>
-                    </ul>
-                </div>
-        </fieldset>
-        <button type="submit" class="btn btn-success button">отправить</button>
-    </form>
-
+<div class="container">
+    <h4>Please choose the date and time to register for exam</h4>
+    <br>
+    {{#each card}}
+        <div class="card p-3 mycard">
+            <form action="/user/exam-register" method="POST">
+                <h4>{{this.date}}</h4>
+                <input type="hidden" name="date" value="{{this.date}}">
+                {{#each this.time}}
+                    <input type="radio" name="time" value="{{this.time}}">
+                    <label for="this">{{this.time}}</label>
+                {{/each}}
+                <br>
+                <p>Examinator: <b>{{this.admin}}</b></p>
+                <input type="submit" class="btn btn-success btn-small" value="Submit">
+            </form>
+        </div>
+    {{/each}}
+</div>

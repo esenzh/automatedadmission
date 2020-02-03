@@ -1,0 +1,20 @@
+<div class="container">
+    <h4>Created slots by you:</h4>
+    <br>
+    <br>
+    {{#each card}}
+        <ul class="list-group">
+            <li class="list-group-item active">Exam date: <b>{{this.date}}</b></li>
+            <li class="list-group-item">Exam handler: <b>{{this.admin}}</b></li>
+            {{#each this.time}}
+                <li class="list-group-item">Time: <b>{{this.time}}</b></li>
+                {{#if this.user}}
+                    <li class="list-group-item">Student: <b>{{this.user}}</b></li>
+                {{else}}
+                    <li class="list-group-item">Student: <b>--</b></li>
+                {{/if}}
+            {{/each}}
+        </ul>
+        <br>
+    {{/each}}
+</div>

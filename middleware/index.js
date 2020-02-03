@@ -23,7 +23,7 @@ module.exports = function(app) {
       secret: 'very secret',
       resave: false,
       saveUninitialized: false,
-      // cookie: {
+      // cookie: {r
         // expires: 600000,
       // },
     }),

@@ -1,7 +1,18 @@
 <div class="container">
     <div class="card m-3 p-4">
         {{#if message}}
-            <p>{{this.message}}</p>
+            {{#if status}}
+                <div class="list-group">
+                    <a href="#!"
+                       class="list-group-item list-group-item-action list-group-item-success">{{this.message}}</a>
+                </div>
+            {{else}}
+                <div class="list-group">
+                    <a href="#!"
+                       class="list-group-item list-group-item-action list-group-item-success">{{this.message}}</a>
+                </div>
+            {{/if}}
+            <br>
         {{/if}}
         <p>Please set a time and date to handle the exam with student</p>
         <br>
